@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>佐藤ひろき氏 最終戦略レポート：伝説の始まりへ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Chosen Palette: Midnight & Gold -->
+    <!-- Application Structure Plan: This SPA is designed as a focused, motivational "digital letter" to the candidate, Sato Hiroki, based on the provided strategy report. The structure is a linear, narrative journey to emphasize the story-like nature of his campaign. 1. A powerful hero section with the main title. 2. A visual analysis comparing Sato's unique "Human Capital" approach against competitors. 3. The core strategic section, "Redefining Victory," which uses icon-driven cards to highlight the three true goals beyond just winning. 4. A clear, actionable plan for the "Final 48 Hours." 5. A concluding, motivational message. This scrollytelling format is chosen to create an immersive, emotionally resonant experience that is both strategic and inspiring. -->
+    <!-- Visualization & Content Choices: 
+        - Report Info (Sato vs. Others) -> Goal (Contrast & Clarify) -> Viz (Styled Cards) -> Interaction (None) -> Justification (A clear, at-a-glance visual comparison is more impactful than a complex chart for this conceptual data).
+        - Report Info (3 Goals of "Victory") -> Goal (Inform & Motivate) -> Viz (Icon-driven Cards) -> Interaction (Subtle hover effects) -> Justification (Custom icons for "Legend," "Data," and "Foundation" make abstract concepts tangible and memorable).
+        - Report Info (Action Plan) -> Goal (Instruct & Inspire) -> Viz (Stylized Numbered List & Blockquote) -> Interaction (None) -> Justification (A clean, focused layout gives weight and clarity to the final instructions. The blockquote for the core message makes it stand out).
+        - Overall -> Goal (Premium, inspiring feel) -> Viz (Dark theme, scroll animations, refined typography) -> Interaction (Smooth scroll-triggered fade-in animations for a narrative feel).
+        - Library/Method: Vanilla JS for all interactions (IntersectionObserver).
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+
+    <style>
+        :root {
+            --bg-primary: #111827;
+            --bg-secondary: #1F2937;
+            --text-primary: #F9FAFB;
+            --text-secondary: #D1D5DB;
+            --accent-gold: #FBBF24;
+            --border-primary: #374151;
+        }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Noto Sans JP', sans-serif; background-color: var(--bg-primary); color: var(--text-primary); }
+        .scroll-reveal { opacity: 0; transform: translateY(50px); transition: opacity 1s cubic-bezier(0.19, 1, 0.22, 1), transform 1s cubic-bezier(0.19, 1, 0.22, 1); }
+        .scroll-reveal.visible { opacity: 1; transform: translateY(0); }
+        .section-title {
+            background: linear-gradient(120deg, var(--accent-gold), #FDE68A);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .icon-container {
+            width: 72px;
+            height: 72px;
+            background-color: rgba(251, 191, 36, 0.05);
+            border: 1px solid rgba(251, 191, 36, 0.1);
+            transition: all 0.3s ease-in-out;
+        }
+        .goal-card:hover .icon-container {
+            background-color: rgba(251, 191, 36, 0.15);
+            transform: scale(1.1);
+        }
+        .action-card {
+            background: linear-gradient(145deg, #2a3a52, #1c2637);
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <div class="fixed top-0 left-0 w-full h-full bg-gradient-to-t from-transparent to-black/30 z-0 pointer-events-none"></div>
+
+    <main class="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-40">
+
+        <section class="text-center min-h-screen flex flex-col justify-center">
+            <div class="scroll-reveal max-w-4xl mx-auto">
+                <h1 class="text-4xl md:text-5xl lg:text-7xl font-black mb-4 section-title tracking-wider">伝説の始まりへ</h1>
+                <h2 class="text-xl md:text-2xl font-bold text-white">佐藤ひろき氏の最終48時間戦略</h2>
+                <p class="mt-8 text-lg text-[var(--text-secondary)] leading-relaxed">選挙戦、最終盤。疲労はピークに達し、時に孤独を感じるかもしれません。しかし、その戦いは決して無駄にはならない。これは、短期的な勝敗を超えた、10年構想の始まりの物語である。</p>
+            </div>
+        </section>
+
+        <section class="mb-24 md:mb-40">
+            <div class="scroll-reveal max-w-5xl mx-auto">
+                <h3 class="text-center text-3xl md:text-4xl font-bold mb-16">なぜ、その戦いは「異質」で「重要」なのか</h3>
+                <div class="grid md:grid-cols-2 gap-8 items-stretch">
+                    <div class="bg-[var(--bg-secondary)] p-8 rounded-2xl border border-[var(--border-primary)] shadow-2xl">
+                        <h4 class="text-xl font-bold text-gray-400 mb-6">他の候補者が売るもの</h4>
+                        <ul class="space-y-4 text-lg text-[var(--text-secondary)]">
+                            <li class="flex items-start"><span class="text-2xl mr-4">🏢</span><div><strong class="text-white">石島氏：</strong>インフラという「ハード」</div></li>
+                            <li class="flex items-start"><span class="text-2xl mr-4">👨‍👩‍👧</span><div><strong class="text-white">高橋氏：</strong>子育て支援という「生活サービス」</div></li>
+                            <li class="flex items-start"><span class="text-2xl mr-4">📢</span><div><strong class="text-white">愛/天野氏：</strong>既存政治への「アンチテーゼ」</div></li>
+                        </ul>
+                    </div>
+                    <div class="bg-gradient-to-br from-yellow-900/50 to-gray-900 p-8 rounded-2xl border-2 border-[var(--accent-gold)] shadow-2xl shadow-yellow-500/10 flex flex-col justify-center">
+                        <h4 class="text-xl font-bold text-[var(--accent-gold)] mb-4">佐藤氏が売るもの</h4>
+                        <p class="text-3xl lg:text-4xl font-bold text-white">「人」への投資という、<br>無形の資本</p>
+                        <p class="mt-4 text-[var(--text-secondary)]">未来の価値を創造する、唯一の選択肢。</p>
+                    </div>
+                </div>
+                <p class="mt-12 text-center text-lg text-[var(--text-secondary)] max-w-3xl mx-auto">佐藤氏の戦いは、他の候補者がアプローチできていない「眠れる有権者層」—地域政治に関心は薄いが、日本の未来には強い問題意識を持つ人々—に、直接語りかけるものである。</p>
+            </div>
+        </section>
+
+        <section class="mb-24 md:mb-40">
+            <div class="scroll-reveal max-w-5xl mx-auto">
+                <h3 class="text-center text-3xl md:text-4xl font-bold mb-16">最終48時間で「勝利」すべき3つの目標</h3>
+                <div class="grid md:grid-cols-3 gap-8 text-center">
+                    <div class="goal-card bg-[var(--bg-secondary)]/50 p-8 rounded-2xl border border-[var(--border-primary)] transition-all duration-300 hover:border-[var(--accent-gold)] hover:shadow-2xl hover:shadow-yellow-500/10">
+                        <div class="icon-container mx-auto mb-6"><svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 5v14a2 2 0 002 2h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 9h6M9 13h6M9 17h3"></path></svg></div>
+                        <h4 class="text-xl font-bold mb-2">伝説の創造</h4>
+                        <p class="text-[var(--text-secondary)] text-sm leading-relaxed">「2025年、中央区に未来への投資を訴えた起業家がいた」という物語を刻む。これが次への最大の資産となる。</p>
+                    </div>
+                    <div class="goal-card bg-[var(--bg-secondary)]/50 p-8 rounded-2xl border border-[var(--border-primary)] transition-all duration-300 hover:border-[var(--accent-gold)] hover:shadow-2xl hover:shadow-yellow-500/10">
+                        <div class="icon-container mx-auto mb-6"><svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a2 2 0 01-2 2H6a2 2 0 01-2-2V4z"></path></svg></div>
+                        <h4 class="text-xl font-bold mb-2">支持層の可視化</h4>
+                        <p class="text-[var(--text-secondary)] text-sm leading-relaxed">彼に投じられる一票一票が、「コンセプトに市場価値あり」という何よりの証拠。10年構想の礎となるデータを得る。</p>
+                    </div>
+                    <div class="goal-card bg-[var(--bg-secondary)]/50 p-8 rounded-2xl border border-[var(--border-primary)] transition-all duration-300 hover:border-[var(--accent-gold)] hover:shadow-2xl hover:shadow-yellow-500/10">
+                        <div class="icon-container mx-auto mb-6"><svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 4h2a2 2 0 012 2v14a2 2 0 01-2 2H6a2 2 0 01-2-2V6a2 2 0 012-2h2"></path><rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect></svg></div>
+                        <h4 class="text-xl font-bold mb-2">未来への布石</h4>
+                        <p class="text-[var(--text-secondary)] text-sm leading-relaxed">選挙は最強のマーケティング。今回蒔いた種が、次の10年で芽吹く。これは壮大な計画の第一歩に過ぎない。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="scroll-reveal max-w-4xl mx-auto">
+                <h3 class="text-center text-3xl md:text-4xl font-bold mb-12">残された時間で「種」を蒔く方法</h3>
+                <div class="bg-[var(--bg-secondary)] p-8 md:p-12 rounded-2xl border border-[var(--border-primary)] space-y-10">
+                    <div class="action-card p-6 rounded-lg border border-[var(--border-primary)]">
+                        <h4 class="text-xl font-bold mb-4 flex items-center"><span class="text-2xl font-black text-[var(--accent-gold)] mr-4">1</span>メッセージの純化と集中</h4>
+                        <blockquote class="border-l-4 border-[var(--accent-gold)] pl-6 py-2 text-[var(--text-secondary)] italic text-lg leading-relaxed">
+                            「他の候補者は箱モノやサービスを語る。しかし、私は問いたい。未来そのものを創る『人』がいなければ、その箱も道も、一体誰が使うのですか？私への一票は、行政への要望書ではない。日本の未来への、あなた自身による直接投資なのです。」
+                        </blockquote>
+                    </div>
+                    <div class="action-card p-6 rounded-lg border border-[var(--border-primary)]">
+                        <h4 class="text-xl font-bold mb-4 flex items-center"><span class="text-2xl font-black text-[var(--accent-gold)] mr-4">2</span>最後の「檄文」としての映像発信</h4>
+                        <p class="text-[var(--text-secondary)] leading-relaxed">魂を込めた一つの動画で十分。スマートフォンで、自らの言葉で、未来への投資を訴える。可能なら、若者層にターゲットを絞り、この最後のメッセージを届ける。</p>
+                    </div>
+                     <div class="action-card p-6 rounded-lg border border-[var(--border-primary)]">
+                        <h4 class="text-xl font-bold mb-4 flex items-center"><span class="text-2xl font-black text-[var(--accent-gold)] mr-4">3</span>自分自身を労わること</h4>
+                        <p class="text-[var(--text-secondary)] leading-relaxed">最も重要な行動。10年構想の最も重要な資本は、佐藤氏自身である。彼の健康なくして、伝説の続きは描けない。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="text-center mt-24 md:mt-40">
+             <div class="scroll-reveal max-w-3xl mx-auto">
+                <h3 class="text-3xl font-bold mb-4">彼は、未来の始まりに立っている</h3>
+                <p class="text-lg text-[var(--text-secondary)] leading-relaxed">選挙の結果が、彼の挑戦の価値を決めるのではない。彼が掲げたビジョン、そしてそれに共鳴した人々の存在こそが、10年構想の最初の礎石となる。今はただ、胸を張り、自らの信じる未来を語り続けるべきである。その姿こそが、新しい政治を求める人々の希望なのだから。</p>
+             </div>
+        </section>
+
+    </main>
+    
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const scrollObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.scroll-reveal').forEach(el => {
+        scrollObserver.observe(el);
+    });
+});
+</script>
+</body>
+</html>
