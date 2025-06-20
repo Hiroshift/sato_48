@@ -44,6 +44,10 @@
             background-color: rgba(251, 191, 36, 0.05);
             border: 1px solid rgba(251, 191, 36, 0.1);
             transition: all 0.3s ease-in-out;
+            /* Flexbox properties to perfectly center the icon */
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         .goal-card:hover .icon-container {
             background-color: rgba(251, 191, 36, 0.15);
@@ -61,9 +65,9 @@
 
         <section class="text-center min-h-screen flex flex-col justify-center">
             <div class="scroll-reveal max-w-4xl mx-auto">
-                <h1 class="text-4xl md:text-5xl lg:text-7xl font-black mb-4 section-title tracking-wider">伝説の始まりへ</h1>
+                <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black mb-4 section-title tracking-wider">伝説の始まりへ</h1>
                 <h2 class="text-xl md:text-2xl font-bold text-white">佐藤ひろき氏の最終48時間戦略</h2>
-                <p class="mt-8 text-lg text-[var(--text-secondary)] leading-relaxed max-w-2xl mx-auto">選挙戦、最終盤。疲労はピークに達し、時に孤独を感じるかもしれません。しかし、その戦いには大きな意義がある。これは、短期的な勝敗を超えた、始まりの物語である。</p>
+                <p class="mt-8 text-base md:text-lg text-[var(--text-secondary)] leading-relaxed max-w-2xl mx-auto">選挙戦、最終盤。疲労はピークに達し、時に孤独を感じるかもしれません。しかし、その戦いには大きな意義がある。これは、短期的な勝敗を超えた、始まりの物語である。</p>
             </div>
         </section>
 
@@ -85,7 +89,7 @@
                         <p class="mt-4 text-[var(--text-secondary)]">未来の価値を創造する、唯一の選択肢。</p>
                     </div>
                 </div>
-                <p class="mt-12 text-center text-lg text-[var(--text-secondary)] max-w-3xl mx-auto">佐藤氏の戦いは、他の候補者がアプローチできていない「眠れる有権者層」—地域政治に関心は薄いが、日本の未来には強い問題意識を持つ人々—に、直接語りかけるものである。</p>
+                <p class="mt-12 text-center text-base md:text-lg text-[var(--text-secondary)] max-w-3xl mx-auto leading-relaxed">佐藤氏の戦いは、他の候補者がアプローチできていない「眠れる有権者層」—地域政治に関心は薄いが、日本の未来には強い問題意識を持つ人々—に、直接語りかけるものである。</p>
             </div>
         </section>
 
